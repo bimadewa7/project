@@ -1,0 +1,397 @@
+/* ==========================================================================
+   BIMA ARYA DEWA — MOODY INDIE AESTHETICS (THE NEIGHBOURHOOD & ARCTIC MONKEYS)
+   Core Design System: Film Grain, Ambient Glow, Kinetic Typography, Smooth Transitions
+   ========================================================================== */
+
+/* 1. Global Reset & Typography Baseline */
+:root {
+  --bg-deep: #0B0B0C;
+  --bg-surface: #141416;
+  --bg-surface-elevated: #1C1C1E;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --text-primary: #F2F2F0;
+  --text-muted: #9A9A9E;
+  --accent-moody: #A0938A; /* Warm dusty rose-clay / vinyl jacket */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 2. Film Grain Overlay (The Neighbourhood Noir Aesthetic) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* 3. Selection Styling */
+::selection {
+  background-color: var(--accent-moody);
+  color: #0B0B0C;
+}
+
+::-moz-selection {
+  background-color: var(--accent-moody);
+  color: #0B0B0C;
+}
+
+/* 4. Sleek Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252528;
+  border-radius: 9999px;
+  border: 2px solid var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3A3E;
+}
+
+/* 5. Ambient Floating Fog Orbs (Arctic Monkeys Moody Atmosphere) */
+.fog-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.12;
+  z-index: 0;
+  will-change: transform, opacity;
+  animation: floatFog 22s ease-in-out infinite alternate;
+}
+
+.fog-orb-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(160, 147, 138, 0.4) 0%, rgba(20, 20, 24, 0) 70%);
+  top: 5%;
+  right: -5%;
+  animation-duration: 25s;
+}
+
+.fog-orb-2 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(100, 100, 120, 0.3) 0%, rgba(11, 11, 12, 0) 70%);
+  top: 40%;
+  left: -10%;
+  animation-duration: 30s;
+  animation-delay: -7s;
+}
+
+.fog-orb-3 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(160, 147, 138, 0.25) 0%, rgba(11, 11, 12, 0) 70%);
+  bottom: 10%;
+  right: 15%;
+  animation-duration: 22s;
+  animation-delay: -14s;
+}
+
+@keyframes floatFog {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.09;
+  }
+  50% {
+    transform: translate(30px, -25px) scale(1.08);
+    opacity: 0.16;
+  }
+  100% {
+    transform: translate(-25px, 20px) scale(0.95);
+    opacity: 0.11;
+  }
+}
+
+/* 6. Header Glassmorphism */
+#siteHeader {
+  background: rgba(11, 11, 12, 0.82) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* 7. Enhanced Navigation Links with Kinetic Underline */
+a.nav-link {
+  position: relative;
+  display: inline-block;
+  color: #9A9A9E !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+  text-decoration: none;
+}
+
+a.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #F2F2F0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-cinematic);
+}
+
+a.nav-link:hover {
+  color: #F2F2F0 !important;
+}
+
+a.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+a.nav-link.is-active {
+  color: #F2F2F0 !important;
+  font-weight: 500 !important;
+}
+
+a.nav-link.is-active::after {
+  transform: scaleX(1);
+  background: #F2F2F0;
+}
+
+/* 8. Cinematic Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-cinematic), transform 0.9s var(--ease-cinematic);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay modifiers for staggered reveals */
+.reveal[style*="--delay"] {
+  transition-delay: var(--delay);
+}
+
+/* 9. Card & Interactive Elevating Effects */
+.card-hover-effect {
+  transition: transform 0.4s var(--ease-cinematic), border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* 10. Moody Eyebrows & Accents */
+.eyebrow,
+.text-gold,
+.accent-text {
+  color: var(--accent-moody) !important;
+  letter-spacing: 0.18em;
+}
+
+/* 11. Headings Style Polish */
+h1, h2, h3, .font-display {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+h1.tracking-widest,
+h2.tracking-widest,
+.eyebrow {
+  letter-spacing: 0.16em !important;
+}
+
+/* 12. Monospace Elements */
+.font-mono,
+code,
+pre {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* 13. Page Transitions (Motion Blur & Scale) */
+.transition-page {
+  transition: opacity 0.45s var(--ease-cinematic), transform 0.45s var(--ease-cinematic), filter 0.45s var(--ease-cinematic);
+}
+
+.is-transitioning {
+  opacity: 0;
+  transform: scale(0.97);
+  filter: blur(8px);
+}
+
+/* 14. Subtle Photo Parallax & Vignette Polish */
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, transparent 45%, rgba(11, 11, 12, 0.75) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 15. Lightbox Modal Transitions */
+#lightboxModal {
+  transition: opacity 0.3s var(--ease-cinematic);
+}
+
+#lightboxModal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#lightboxModal:not(.hidden) {
+  opacity: 1;
+}
+
+#lightboxImg {
+  transition: transform 0.4s var(--ease-cinematic), opacity 0.3s ease;
+}
+
+/* 16. Unified Moody Indie Footer */
+footer {
+  background-color: #0E0E10 !important;
+  color: #F2F2F0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+footer p,
+footer a {
+  color: rgba(242, 242, 240, 0.7) !important;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #F2F2F0 !important;
+}
+
+footer .eyebrow {
+  color: var(--accent-moody) !important;
+}
+
+footer .font-display {
+  color: #F2F2F0 !important;
+}
+
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* 17. Subtle Profile Parallax & Card Glow */
+.photo-hero-card {
+  perspective: 1000px;
+}
+
+.photo-hero-card > div:first-child {
+  transition: transform 0.6s var(--ease-cinematic), box-shadow 0.6s var(--ease-cinematic);
+}
+
+.photo-hero-card:hover > div:first-child {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.14) !important;
+}
+
+/* 18. Modern Form Input Focus & Glow */
+.form-input {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+}
+
+.form-input:focus {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 0 0 3px rgba(160, 147, 138, 0.18) !important;
+  background-color: #161619 !important;
+}
+
+/* 19. Smooth Button Transitions */
+button,
+a.inline-flex,
+a.group {
+  transition: transform 0.3s var(--ease-cinematic), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease;
+}
+
+/* 20. Seamless SPA Single-HTML View Transitions */
+.spa-view {
+  width: 100%;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.spa-view.hidden {
+  display: none !important;
+}
+
+.spa-view.view-entering {
+  opacity: 0 !important;
+  transform: translateY(14px) scale(0.985) !important;
+  filter: blur(8px) !important;
+}
+
+.spa-view.view-leaving {
+  opacity: 0 !important;
+  transform: translateY(-10px) scale(0.99) !important;
+  filter: blur(6px) !important;
+  pointer-events: none !important;
+}
+
+/* Splash Screen Overlay Styling */
+#splashOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #0B0B0C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#splashOverlay.splash-dismissed {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+
+
