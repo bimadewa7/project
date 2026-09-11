@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Bima Arya Dewa</title>
+  <meta name="description" content="Photos from campus life, study sessions, team projects, and accounting competitions in Semarang." />
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23141416' stroke='%232E2E30' stroke-width='4'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' fill='%23F2F2F0' font-family='sans-serif' font-size='46' font-weight='bold' letter-spacing='-1.5'>Dv</text></svg>" />
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            background: '#0B0B0C',
+            foreground: '#F2F2F0',
+            primary: {
+              DEFAULT: '#F2F2F0',
+              foreground: '#0B0B0C',
+            },
+            secondary: {
+              DEFAULT: '#1C1C1E',
+              foreground: '#F2F2F0',
+            },
+            muted: {
+              DEFAULT: '#9A9A9E',
+              foreground: '#9A9A9E',
+            },
+            accent: {
+              DEFAULT: '#A0938A',
+              foreground: '#0B0B0C',
+            },
+            gold: '#A0938A',
+            card: {
+              DEFAULT: '#141416',
+              foreground: '#F2F2F0',
+            },
+            border: '#2E2E30',
+          },
+          boxShadow: {
+            card: 'none',
+            float: 'none',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .no-transition * { transition: none !important; }
+    /* Monochrome Grunge Styles */
+    body {
+      background-color: #0B0B0C;
+      color: #F2F2F0;
+      position: relative;
+    }
+    
+    body::before {
+      content: none;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, transparent 50%, #0B0B0C 150%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    header, header *, nav, nav * {
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    img,
+    section.paper-grid img,
+    .paper-grid img,
+    #lightboxModal img {
+      filter: none !important;
+      -webkit-filter: none !important;
+    }
+
+    h1, h2, h3, .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-[#0B0B0C] font-sans text-[#F2F2F0] min-h-screen flex flex-col antialiased">
+  <div class="vignette"></div>
+
+  <!-- ================= STICKY HEADER ================= -->
+  <header id="siteHeader" class="sticky top-0 z-50 border-b border-[#2E2E30]/50 bg-[#0B0B0C]">
+    <div class="mx-auto flex h-18 max-w-6xl items-center justify-between px-5 py-4">
+      <!-- Brand / Logo (1-Tone Professional Dv Monogram) -->
+      <a href="bio.html" class="flex items-center gap-3 group">
+        <span
+          class="grid size-10 place-items-center rounded-xl bg-[#141416] border border-white/10 text-[#F2F2F0] shadow-sm transition-all duration-300 group-hover:border-white/25 group-hover:bg-[#1A1A1E] group-hover:scale-105">
+          <span class="font-['Plus_Jakarta_Sans',sans-serif] text-[17px] font-bold tracking-tight text-[#F2F2F0] select-none transition-transform duration-300 group-hover:scale-110">
+            Dv
+          </span>
+        </span>
+        <span class="font-display text-lg text-primary font-semibold tracking-tight transition-colors group-hover:text-white">
+          Bima Arya Dewa
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 lg:flex">
+        <a href="bio.html" class="nav-link group relative text-sm py-1">Overview</a>
+        <a href="expertise.html" class="nav-link group relative text-sm py-1">Expertise</a>
+        <a href="achievements.html" class="nav-link group relative text-sm py-1">Achievements</a>
+        <a href="gallery.html" class="nav-link group relative text-sm py-1 is-active">Gallery</a>
+        <a href="contact.html" class="nav-link group relative text-sm py-1">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="contact.html" class="hidden items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex shadow-sm">
+          Get in Touch
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+        <button id="menuBtn" type="button" aria-label="Toggle menu" class="grid size-10 place-items-center rounded-xl border border-border text-primary hover:bg-secondary transition-colors lg:hidden">
+          <svg id="hamburgerIcon" class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="closeIcon" class="size-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="overflow-hidden border-t border-border bg-background transition-all duration-300 max-h-0 opacity-0 lg:hidden">
+      <nav class="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
+        <a href="bio.html" class="rounded-lg px-3 py-3 text-base text-muted-foreground transition-colors hover:bg-secondary hover:text-primary">Overview</a>
+        <a href="expertise.html" class="rounded-lg px-3 py-3 text-base text-muted-foreground transition-colors hover:bg-secondary hover:text-primary">Expertise</a>
+        <a href="achievements.html" class="rounded-lg px-3 py-3 text-base text-muted-foreground transition-colors hover:bg-secondary hover:text-primary">Achievements</a>
+        <a href="gallery.html" class="rounded-lg px-3 py-3 text-base font-medium bg-secondary text-primary">Gallery</a>
+        <a href="contact.html" class="rounded-lg px-3 py-3 text-base text-muted-foreground transition-colors hover:bg-secondary hover:text-primary">Contact</a>
+        <div class="pt-2">
+          <a href="contact.html" class="block rounded-xl bg-primary px-4 py-3 text-center text-sm font-medium text-primary-foreground">Get in Touch</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="flex-1 paper-grid relative overflow-hidden">
+    <!-- Ambient moody fog orbs -->
+    <div class="fog-orb fog-orb-1"></div>
+    <div class="fog-orb fog-orb-2"></div>
+
+    <section class="mx-auto max-w-6xl px-5 py-20 relative z-10">
+      
+      <!-- Heading -->
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow inline-flex items-center gap-3 text-gold">
+          <span class="h-px w-8 bg-gold/60"></span>
+          Behind the CV
+          <span class="h-px w-8 bg-gold/60"></span>
+        </p>
+        <h1 class="mt-4 font-display text-4xl text-primary sm:text-6xl font-bold">
+          Photos
+        </h1>
+        <p class="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+          Moments from campus, study sessions, and competition days. Click any photo to view it full size — arrow keys navigate, Esc closes.
+        </p>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="mt-14 grid auto-rows-[15rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <!-- Photo 0: Portrait (row-span-2) -->
+        <div class="reveal sm:row-span-2" style="--delay: 0.05s">
+          <button type="button" onclick="openLightbox(0)" class="card-hover-effect group relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card shadow-card focus:outline-none">
+            <img src="images/photo-portrait.jpg" alt="Portrait of Bima Arya Dewa" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" style="filter: none !important; -webkit-filter: none !important;" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/85 via-[#0B0B0C]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute bottom-4 left-5 flex items-center gap-2 text-sm font-medium text-[#F2F2F0] opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              Portrait
+            </span>
+          </button>
+        </div>
+
+        <!-- Photo 1: Campus -->
+        <div class="reveal" style="--delay: 0.1s">
+          <button type="button" onclick="openLightbox(1)" class="card-hover-effect group relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card shadow-card focus:outline-none">
+            <img src="images/photo-campus.jpg" alt="Politeknik Negeri Semarang campus" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" style="filter: none !important; -webkit-filter: none !important;" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/85 via-[#0B0B0C]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute bottom-4 left-5 flex items-center gap-2 text-sm font-medium text-[#F2F2F0] opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              Campus, Semarang
+            </span>
+          </button>
+        </div>
+
+        <!-- Photo 2: Desk -->
+        <div class="reveal" style="--delay: 0.15s">
+          <button type="button" onclick="openLightbox(2)" class="card-hover-effect group relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card shadow-card focus:outline-none">
+            <img src="images/photo-campus2.jpg" alt="Politeknik Negeri Semarang Gedung Kuliah Terpadu" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" style="filter: none !important; -webkit-filter: none !important;" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/85 via-[#0B0B0C]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute bottom-4 left-5 flex items-center gap-2 text-sm font-medium text-[#F2F2F0] opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              Gedung Kuliah Terpadu
+            </span>
+          </button>
+        </div>
+
+        <!-- Photo 3: Team (col-span-2) -->
+        <div class="reveal sm:col-span-2" style="--delay: 0.2s">
+          <button type="button" onclick="openLightbox(3)" class="card-hover-effect group relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card shadow-card focus:outline-none">
+            <img src="images/valo.jpg" alt="Team project session" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" style="filter: none !important; -webkit-filter: none !important;" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/85 via-[#0B0B0C]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute bottom-4 left-5 flex items-center gap-2 text-sm font-medium text-[#F2F2F0] opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              Team project
+            </span>
+          </button>
+        </div>
+
+        <!-- Photo 4: Competition -->
+        <div class="reveal" style="--delay: 0.25s">
+          <button type="button" onclick="openLightbox(4)" class="card-hover-effect group relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card shadow-card focus:outline-none">
+            <img src="images/rc.jpg" alt="Anything You Want showcase" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" style="filter: none !important; -webkit-filter: none !important;" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/85 via-[#0B0B0C]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute bottom-4 left-5 flex items-center gap-2 text-sm font-medium text-[#F2F2F0] opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              Anything You Want
+            </span>
+          </button>
+        </div>
+
+        <!-- Photo 5: Certificate -->
+        <div class="reveal" style="--delay: 0.3s">
+          <button type="button" onclick="openLightbox(5)" class="card-hover-effect group relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card shadow-card focus:outline-none">
+            <img src="images/photo-certificate.jpg" alt="Award certificate" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" style="filter: none !important; -webkit-filter: none !important;" loading="lazy" />
+            <span class="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/85 via-[#0B0B0C]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+            <span class="absolute bottom-4 left-5 flex items-center gap-2 text-sm font-medium text-[#F2F2F0] opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              Award certificate
+            </span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= LIGHTBOX MODAL ================= -->
+    <div id="lightboxModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm select-none" onclick="closeLightbox()">
+      <!-- Close button -->
+      <button type="button" aria-label="Close" onclick="closeLightbox()" class="absolute right-5 top-5 grid size-11 place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/30 z-10">
+        <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Prev button -->
+      <button type="button" aria-label="Previous photo" onclick="event.stopPropagation(); changePhoto(-1)" class="absolute left-4 grid size-11 place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/30 z-10">
+        <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+
+      <!-- Content -->
+      <figure onclick="event.stopPropagation()" class="max-h-full max-w-4xl flex flex-col items-center">
+        <img id="lightboxImg" src="" alt="" class="max-h-[78vh] rounded-2xl object-contain shadow-2xl transition-all" style="filter: none !important; -webkit-filter: none !important;" />
+        <figcaption id="lightboxCaption" class="mt-4 text-center text-sm text-white/80 font-medium">
+        </figcaption>
+      </figure>
+
+      <!-- Next button -->
+      <button type="button" aria-label="Next photo" onclick="event.stopPropagation(); changePhoto(1)" class="absolute right-4 grid size-11 place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/30 z-10">
+        <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-border bg-primary text-primary-foreground">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <p class="font-display text-2xl font-bold">Bima Arya Dewa</p>
+        <p class="mt-2 max-w-sm text-sm text-primary-foreground/70 leading-relaxed">
+          Computerized Accounting Student — focused on accurate financial reporting, reconciliation, and ERP-supported data processing.
+        </p>
+      </div>
+
+      <div class="space-y-3 text-sm">
+        <p class="eyebrow text-gold">Contact</p>
+        <a href="tel:+6285111217733" class="flex items-center gap-2 text-primary-foreground/80 hover:text-gold transition-colors">
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          0851-1121-7733
+        </a>
+        <a href="mailto:email.bimaaryadewa@gmail.com" class="flex items-center gap-2 text-primary-foreground/80 hover:text-gold transition-colors">
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          email.bimaaryadewa@gmail.com
+        </a>
+        <p class="flex items-center gap-2 text-primary-foreground/80">
+          <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Semarang, Indonesia
+        </p>
+      </div>
+
+      <div class="space-y-3 text-sm">
+        <p class="eyebrow text-gold">Pages</p>
+        <a href="bio.html" class="block text-primary-foreground/80 transition-colors hover:text-gold">Overview</a>
+        <a href="expertise.html" class="block text-primary-foreground/80 transition-colors hover:text-gold">Expertise</a>
+        <a href="achievements.html" class="block text-primary-foreground/80 transition-colors hover:text-gold">Achievements</a>
+        <a href="gallery.html" class="block text-primary-foreground/80 transition-colors hover:text-gold">Gallery</a>
+        <a href="contact.html" class="block text-primary-foreground/80 transition-colors hover:text-gold">Contact</a>
+      </div>
+    </div>
+
+    <div class="border-t border-primary-foreground/15">
+      <p class="mx-auto max-w-6xl px-5 py-5 text-xs text-primary-foreground/60">
+        © <span id="year">2026</span> Bima Arya Dewa. Curriculum vitae.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Script -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const photos = [
+      { src: 'images/photo-portrait.jpg', alt: 'Portrait of Bima Arya Dewa', caption: 'Portrait' },
+      { src: 'images/photo-campus.jpg', alt: 'Politeknik Negeri Semarang campus', caption: 'Campus, Semarang' },
+      { src: 'images/photo-campus2.jpg', alt: 'Politeknik Negeri Semarang Gedung Kuliah Terpadu', caption: 'Gedung Kuliah Terpadu' },
+      { src: 'images/valo.jpg', alt: 'Team project session', caption: 'Team project' },
+      { src: 'images/rc.jpg', alt: 'Anything You Want showcase', caption: 'Anything You Want' },
+      { src: 'images/photo-certificate.jpg', alt: 'Award certificate', caption: 'Award certificate' }
+    ];
+
+    let currentIndex = 0;
+    const modal = document.getElementById('lightboxModal');
+    const imgEl = document.getElementById('lightboxImg');
+    const capEl = document.getElementById('lightboxCaption');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function changePhoto(step) {
+      currentIndex = (currentIndex + step + photos.length) % photos.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      const p = photos[currentIndex];
+      imgEl.src = p.src;
+      imgEl.alt = p.alt;
+      capEl.textContent = `${p.caption} · ${currentIndex + 1} / ${photos.length}`;
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') changePhoto(-1);
+        if (e.key === 'ArrowRight') changePhoto(1);
+      }
+    });
+
+    // Mobile Drawer
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    const closeIcon = document.getElementById('closeIcon');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileDrawer.classList.remove('max-h-0', 'opacity-0');
+        mobileDrawer.classList.add('max-h-96', 'opacity-100');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileDrawer.classList.add('max-h-0', 'opacity-0');
+        mobileDrawer.classList.remove('max-h-96', 'opacity-100');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Continuous Music Box & Nonstop SPA Engine -->
+  <script src="music-player.js?v=3" defer></script>
+
+</body>
+</html>
+
